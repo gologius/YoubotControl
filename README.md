@@ -14,3 +14,4 @@ $ roslaunch rosbridge_server rosbridge_tcp.launch
 $ sudo su -
 $ roslaunch youbot_driver_ros_interface youbot_driver.launch
 ```
+Then run this script, and you can control the youbot.
