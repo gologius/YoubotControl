@@ -2,11 +2,15 @@
 This script is an example of TCP client for rosbridge.
 
 Install rosbridge on the remote machine.
+```bash
 $ sudo apt-get install ros-indigo-rosbridge-suite
 $ sudo apt-get install ros-indigo-youbot-driver
+```
 
 Run the youbot driver and the rosbridge TCP server.
+```bash
 $ roscore
 $ roslaunch rosbridge_server rosbridge_tcp.launch
-$ sudo su - 
+$ sudo su -
 $ roslaunch youbot_driver_ros_interface youbot_driver.launch
+```
