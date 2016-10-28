@@ -1,6 +1,7 @@
-#ROSControl
+# YoubotControl
 This script is an example of TCP client for rosbridge.
 
+## Preparation in youbot
 Install rosbridge on the remote machine.
 ```bash
 $ sudo apt-get install ros-indigo-rosbridge-suite
@@ -14,4 +15,11 @@ $ roslaunch rosbridge_server rosbridge_tcp.launch
 $ sudo su -
 $ roslaunch youbot_driver_ros_interface youbot_driver.launch
 ```
-Then run this script, and you can control the youbot.
+
+## Running
+
+### Python
+Then run ` Python/YoubotController.py` this script, and you can control the youbot.
+
+### C++
+open and run ` C++/KUKAControll/KUKAControll.sln`, you can control the youbot.
