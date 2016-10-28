@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KUKAControl", "KUKAControl\KUKAControl.vcxproj", "{3A660AEA-646D-4A02-B462-0116122713DD}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "YoubotControl", "YoubotControl\YoubotControl.vcxproj", "{37620922-9A1D-4DB5-9630-F6BB7988A915}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3A660AEA-646D-4A02-B462-0116122713DD}.Debug|Win32.ActiveCfg = Debug|Win32
-		{3A660AEA-646D-4A02-B462-0116122713DD}.Debug|Win32.Build.0 = Debug|Win32
-		{3A660AEA-646D-4A02-B462-0116122713DD}.Release|Win32.ActiveCfg = Release|Win32
-		{3A660AEA-646D-4A02-B462-0116122713DD}.Release|Win32.Build.0 = Release|Win32
+		{37620922-9A1D-4DB5-9630-F6BB7988A915}.Debug|Win32.ActiveCfg = Debug|Win32
+		{37620922-9A1D-4DB5-9630-F6BB7988A915}.Debug|Win32.Build.0 = Debug|Win32
+		{37620922-9A1D-4DB5-9630-F6BB7988A915}.Release|Win32.ActiveCfg = Release|Win32
+		{37620922-9A1D-4DB5-9630-F6BB7988A915}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

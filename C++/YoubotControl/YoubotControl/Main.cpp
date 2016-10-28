@@ -29,7 +29,7 @@ std::string replace(std::string String1, std::string String2, std::string String
 }
 
 
-std::string generateMoveJSON(float lx, float ly,float lz, float ax, float ay, float az){
+std::string generateMoveJSON(float lx, float ly, float lz, float ax, float ay, float az){
 
 	std::string json = R"(	
 		{
@@ -55,7 +55,7 @@ std::string generateMoveJSON(float lx, float ly,float lz, float ax, float ay, fl
 //=======================================================================================
 
 int main(void){
- 
+
 	const char host[] = "192.168.100.40";
 	const int port = 9090;
 	const float vel = 0.2f;
@@ -68,13 +68,16 @@ int main(void){
 	WSAStartup(MAKEWORD(2, 0), &data);
 	memset(&dest, 0, sizeof(dest));
 	dest.sin_port = htons(port);
-	dest.sin_family = AF_INET;
+	dest.sin_family = AF_INET; //ipv4を使用
 	inet_pton(AF_INET, host, &dest.sin_addr);
 	sock = socket(AF_INET, SOCK_STREAM, 0);
 
+
 	//サーバへの接続
+	std::cout << "start connection" << std::endl;
 	if (connect(sock, (struct sockaddr *) &dest, sizeof(dest))){
-		std::cout << "failed connection" << std::endl;
+		std::cout << "failed connection. press any key + enter to end" << std::endl;
+		int tmp;  std::cin >> tmp;
 		exit(-1);
 	}
 	else {
@@ -87,7 +90,7 @@ int main(void){
 	lx = 0.0f;
 	while (true) {
 		lx = 0.0f; ly = 0.0f; lz = 0.0f; ax = 0.0f; ay = 0.0f; az = 0.0f;
-		
+
 		std::string key;
 		std::cin >> key;
 		if (key[0] == 'w')
@@ -101,8 +104,8 @@ int main(void){
 		else if (key[0] == 'q')
 			break;
 
-		//JSONを生成して, charに変換してから送信
-		std::string json = generateMoveJSON(lx,ly,lz, ax,ay,az);
+		//JSONを生成して, char[]に変換してから送信
+		std::string json = generateMoveJSON(lx, ly, lz, ax, ay, az);
 		char* buf = (char*)json.c_str();
 		send(sock, buf, sizeof(buf), 0);
 	}

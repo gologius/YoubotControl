@@ -11,8 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{3A660AEA-646D-4A02-B462-0116122713DD}</ProjectGuid>
-    <RootNamespace>KUKAControl</RootNamespace>
+    <ProjectGuid>{37620922-9A1D-4DB5-9630-F6BB7988A915}</ProjectGuid>
+    <RootNamespace>YoubotControl</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

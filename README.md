@@ -1,5 +1,6 @@
 # YoubotControl
 This script is an example of TCP client for rosbridge.
+C++ is windows only.
 
 ## Preparation in youbot
 Install rosbridge on the remote machine.
