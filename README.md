@@ -23,4 +23,4 @@ $ roslaunch youbot_driver_ros_interface youbot_driver.launch
 Then run ` Python/YoubotController.py` this script, and you can control the youbot.
 
 ### C++
-open and run ` C++/KUKAControll/KUKAControll.sln`, you can control the youbot.
+open and run ` C++/YoubotControll/YoubotControll.sln`, you can control the youbot.
