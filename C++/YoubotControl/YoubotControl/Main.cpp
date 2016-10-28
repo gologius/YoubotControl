@@ -14,7 +14,6 @@ http://www.geocities.jp/eneces_jupiter_jp/cpp1/010-055.html //文字列置換
 #pragma comment(lib, "WSock32.lib")
 #pragma comment(lib, "ws2_32.lib")
 
-
 std::string replace(std::string String1, std::string String2, std::string String3)
 {
 	std::string::size_type Pos(String1.find(String2));
@@ -31,17 +30,11 @@ std::string replace(std::string String1, std::string String2, std::string String
 
 std::string generateMoveJSON(float lx, float ly, float lz, float ax, float ay, float az){
 
-	std::string json = R"(	
-		{
-			"op": "publish",
-			"topic": "/cmd_vel", 
-			"msg": {
-				"linear": {"x": %lx%, "y": %ly%, "z": %lz%}, 
-				"angular": {"x": %ax%, "y": %ay%, "z": %az%}
-			}
-		}
-	)";
+	std::string op = R"("op": "publish")";
+	std::string topic = R"("topic": "/cmd_vel")";
+	std::string msg = R"("msg": { "linear": {"x": %lx%, "y": %ly%, "z": %lz%}, "angular": {"x": %ax%, "y": %ay%, "z": %az%}}})";
 
+	std::string json = "{" + op + "," + topic + "," + msg + "}";
 	json = replace(json, "%lx%", std::to_string(lx));
 	json = replace(json, "%ly%", std::to_string(ly));
 	json = replace(json, "%lz%", std::to_string(lz));
@@ -58,7 +51,7 @@ int main(void){
 
 	const char host[] = "192.168.100.40";
 	const int port = 9090;
-	const float vel = 0.2f;
+	const float vel = 3.2f;
 
 	SOCKET sock;
 	struct sockaddr_in dest;
@@ -87,7 +80,6 @@ int main(void){
 	//制御ループ
 	std::cout << "press key [wsad] to move youbot" << std::endl;
 	float lx, ly, lz, ax, ay, az;
-	lx = 0.0f;
 	while (true) {
 		lx = 0.0f; ly = 0.0f; lz = 0.0f; ax = 0.0f; ay = 0.0f; az = 0.0f;
 
@@ -106,15 +98,15 @@ int main(void){
 
 		//JSONを生成して, char[]に変換してから送信
 		std::string json = generateMoveJSON(lx, ly, lz, ax, ay, az);
-		char* buf = (char*)json.c_str();
-		send(sock, buf, sizeof(buf), 0);
+		char* c_json = (char*)json.c_str();
+		send(sock, c_json, json.size(), 0);
+		std::cout << c_json << std::endl;
 	}
 
 	//移動停止
 	std::string json = generateMoveJSON(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
 	char* buf = (char*)json.c_str();
-	send(sock, buf, sizeof(buf), 0);
-
+	send(sock, buf, json.size(), 0);
 	closesocket(sock);
 	WSACleanup();
 
