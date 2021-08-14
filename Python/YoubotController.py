@@ -29,7 +29,7 @@ def make_twist(x_lin, y_lin, z_lin, x_ang, y_ang, z_ang):
 if __name__ == '__main__':
     host = '192.168.100.40'
     port = 9090
-    lin_vel = 0.2
+    lin_vel = 0.05
     ang_vel = 0.3
 
     sock = socket.socket()
@@ -37,23 +37,23 @@ if __name__ == '__main__':
     
     print "Use WASD keys (& Enter) to move the youbot."
     while True:
-        x_lin = z_ang = 0.0
+        x_lin = y_lin = 0.0
         
         key = raw_input()
         if key == 'w':
             x_lin = lin_vel
         elif key == 'a':
-            z_ang = ang_vel
+            y_lin = ang_vel
         elif key == 's':
             x_lin = -lin_vel
         elif key == 'd':
-            z_ang = -ang_vel
+            y_lin = -ang_vel
         elif key == 'q':
             break;                
         else:
             continue
         
-        twist = make_twist(x_lin, 0.0, 0.0, 0.0, 0.0, z_ang)
+        twist = make_twist(x_lin, y_lin, 0.0, 0.0, 0.0, 0.0)
         message = make_message(twist)
         sock.send(message)
     

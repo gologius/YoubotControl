@@ -42,8 +42,10 @@ std::string generateMoveJSON(float lx, float ly, float lz, float ax, float ay, f
 	json = replace(json, "%ay%", std::to_string(ay));
 	json = replace(json, "%az%", std::to_string(az));
 
+
 	return json;
 }
+
 
 //=======================================================================================
 
